@@ -38,6 +38,7 @@
     lon = position.coords.longitude;
     x.innerHTML = lat + " " + lon;
     var marker = L.marker([lat,lon]).addTo(map);
+ map.setView([lat, lon], 15);
         }
        /* function showExactPosition(position) {
             var a = 36.818058;
