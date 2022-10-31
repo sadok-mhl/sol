@@ -1,21 +1,54 @@
-<html 
-     <body> 
-         <p> Click on Exact Location Button to get your location </p> 
-         <button onclick="getPreciseLocation()"> Precise Location </button> 
-         <p id="location" ></p> 
-        > <script> 
-            var x = document.getElementById("location");
-            function getPreciseLocation(){
-                if(navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(showExactPosition)
-                }else{
-                    x.innerHTML = "Geolocation is not supported"
-                }
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <p> Click on Exact Location Button to get your location </p>
+    <button onclick="getPreciseLocation()"> Precise Location </button>
+    <p id="location"></p>
+
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([36.818058, 10.177152], 15);
+        L.tileLayer('https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=zKsXUwGbE9mDLS0DAejk', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        }).addTo(map);
+
+
+        var x = document.getElementById("location");
+        function getPreciseLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showExactPosition)
+            } else {
+                x.innerHTML = "Geolocation is not supported"
             }
-            function showExactPosition(position){
-                x.innerHTML = "Latitude: "+position.coords.latitude+
-                " br Longitude: "+position.coords.longitude;
-            }
-        </script>
-        </body> 
-        </html> 
+        }
+        function showExactPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    x.innerHTML = lat + " " + lon;
+    var marker = L.marker([lat,lon]).addTo(map);
+        }
+
+       /* function showExactPosition(position) {
+            var a = 36.818058;
+            var b = 10.177152;
+            var marker = L.marker([lat,lon]).addTo(map);
+
+            x.innerHTML = "Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude;
+        }*/
+  
+    </script>
+
+</body>
+
+</html>
