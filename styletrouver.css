@@ -12,6 +12,7 @@
 	--main-color: #7fc07c;
 }
 body{
+    background-color: #252934;
 	min-height: 100vh;
 	color: var(--text-color);
 }
@@ -139,6 +140,26 @@ h1{
 }
 .reste{
     color: whitesmoke;
+}
+.direction{
+    margin: 0rem 0rem 5rem;
+}
+.radio{
+    margin: 0rem -4rem 5rem;
+    font-size: 20px;
+    justify-content: space-evenly;
+
+
+}
+.form{
+    position: absolute;
+    margin: 5rem 15rem;
+}
+.loca{
+    margin-top: 2rem;
+}
+.map{
+    margin :8rem 5rem 50rem 40rem;
 }
 
 @media (max-width: 1380px){
